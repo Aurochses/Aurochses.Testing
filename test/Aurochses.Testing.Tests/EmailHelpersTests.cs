@@ -35,12 +35,14 @@ namespace Aurochses.Testing.Tests
             // Arrange
             var type = GetType();
             var name = new string('a', 256);
+            const string localPart = "TestLocalPart";
+            const string domain = "TestDomain";
 
             // Act & Assert
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => EmailHelpers.Create(type, name));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => EmailHelpers.Create(type, name, localPart, domain));
             Assert.Equal("email", exception.ParamName);
-            Assert.Equal($"test+{type.FullName}+{name}@aurochses.com", exception.ActualValue);
-            Assert.Equal($"Email length must be less than 256 characters.\r\nParameter name: email\r\nActual value was test+{type.FullName}+{name}@aurochses.com.", exception.Message);
+            Assert.Equal($"{localPart}+{type.FullName}+{name}@{domain}", exception.ActualValue);
+            Assert.Equal($"Email length must be less than 256 characters.\r\nParameter name: email\r\nActual value was {localPart}+{type.FullName}+{name}@{domain}.", exception.Message);
         }
     }
 }
