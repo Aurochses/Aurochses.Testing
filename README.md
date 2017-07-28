@@ -1,4 +1,4 @@
-# Aurochses.Testing
+# Aurochses Testing
 
 Aurochses Testing is a library for creating xUnit tests.
 
