@@ -3,12 +3,12 @@
 namespace Aurochses.Testing
 {
     /// <summary>
-    /// Class EmailHelpers.
+    /// TypeHelpers.
     /// </summary>
-    public static class EmailHelpers
+    public static class TypeHelpers
     {
         /// <summary>
-        /// Creates the test email address based on Type FullName.
+        /// Generates the test email address based on Type FullName.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="name">The name.</param>
@@ -17,7 +17,7 @@ namespace Aurochses.Testing
         /// <returns>System.String.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">Email length must be less than 256 characters.</exception>
         /// <example>{localPart}+{type.FullName}+{name}@{domain}</example>
-        public static string Create(Type type, string name, string localPart = "test", string domain = "aurochses.com")
+        public static string GenerateEmail(this Type type, string name, string localPart = "test", string domain = "aurochses.com")
         {
             var email = $"{localPart}+{type.FullName}+{name}@{domain}";
 

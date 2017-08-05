@@ -16,7 +16,7 @@ namespace Aurochses.Testing.Tests
         }
 
         [Fact]
-        public void GetPath_Success()
+        public void GetFolderPath_Success()
         {
             // Arrange
             const string solutionName = "Aurochses.Testing";
@@ -29,14 +29,14 @@ namespace Aurochses.Testing.Tests
             }
 
             // Act & Assert
-            Assert.Equal(Path.Combine(path, "src", "Aurochses.Testing"), ProjectHelpers.GetPath(solutionName, "src", "Aurochses.Testing"));
+            Assert.Equal(Path.Combine(path, "src", "Aurochses.Testing"), ProjectHelpers.GetFolderPath(solutionName, "src", "Aurochses.Testing"));
         }
 
         [Fact]
-        public void GetPath_ThrowException_WhenSolutionNotFound()
+        public void GetFolderPath_ThrowException_WhenSolutionNotFound()
         {
             // Arrange & Act & Assert
-            var exception = Assert.Throws<Exception>(() => ProjectHelpers.GetPath("Test", "src", "Test"));
+            var exception = Assert.Throws<Exception>(() => ProjectHelpers.GetFolderPath("Test", "src", "Test"));
             Assert.Equal($"Solution root could not be located using application root {_applicationBasePath}.", exception.Message);
         }
     }

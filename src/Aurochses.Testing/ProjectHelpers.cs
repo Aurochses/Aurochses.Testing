@@ -5,19 +5,19 @@ using Microsoft.Extensions.PlatformAbstractions;
 namespace Aurochses.Testing
 {
     /// <summary>
-    /// Class ProjectHelpers.
+    /// ProjectHelpers.
     /// </summary>
     public static class ProjectHelpers
     {
         /// <summary>
-        /// Gets the path.
+        /// Gets the path of project's folder.
         /// </summary>
         /// <param name="solutionName">Name of the solution.</param>
         /// <param name="solutionRelativePath">The solution relative path.</param>
         /// <param name="projectName">Name of the project.</param>
         /// <returns>System.String.</returns>
         /// <exception cref="System.Exception"></exception>
-        public static string GetPath(string solutionName, string solutionRelativePath, string projectName)
+        public static string GetFolderPath(string solutionName, string solutionRelativePath, string projectName)
         {
             // Get currently executing test project path
             var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;

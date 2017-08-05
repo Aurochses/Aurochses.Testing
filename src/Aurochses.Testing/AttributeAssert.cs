@@ -5,7 +5,7 @@ using Xunit;
 namespace Aurochses.Testing
 {
     /// <summary>
-    /// Class AttributeAssert.
+    /// AttributeAssert.
     /// </summary>
     public static class AttributeAssert
     {
