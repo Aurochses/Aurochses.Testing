@@ -5,7 +5,7 @@ using Xunit;
 namespace Aurochses.Testing
 {
     /// <summary>
-    /// Class TypeAssert.
+    /// TypeAssert.
     /// </summary>
     public static class TypeAssert
     {
