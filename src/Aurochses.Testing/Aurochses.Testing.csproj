@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>Aurochses</Authors>
     <Company>Aurochses</Company>
     <Description>Library for creating xUnit tests.</Description>
@@ -23,6 +23,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="xunit.assert" Version="2.2.0" />
   </ItemGroup>
