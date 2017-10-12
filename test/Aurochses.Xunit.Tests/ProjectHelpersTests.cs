@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Extensions.PlatformAbstractions;
 using Xunit;
 
-namespace Aurochses.Testing.Tests
+namespace Aurochses.Xunit.Tests
 {
     public class ProjectHelpersTests
     {
@@ -19,17 +19,17 @@ namespace Aurochses.Testing.Tests
         public void GetFolderPath_Success()
         {
             // Arrange
-            const string solutionName = "Aurochses.Testing";
+            const string solutionName = "Aurochses.Xunit";
 
             var path = new Regex($@"\S+\\{solutionName}\\").Match(_applicationBasePath).Value;
             if (string.IsNullOrWhiteSpace(path))
             {
-                path = new Regex(@"\S+\\Aurochses.Testing.Tests").Match(_applicationBasePath).Value;
-                path = path.Replace(@"\test\Aurochses.Testing.Tests", string.Empty);
+                path = new Regex(@"\S+\\Aurochses.Xunit.Tests").Match(_applicationBasePath).Value;
+                path = path.Replace(@"\test\Aurochses.Xunit.Tests", string.Empty);
             }
 
             // Act & Assert
-            Assert.Equal(Path.Combine(path, "src", "Aurochses.Testing"), ProjectHelpers.GetFolderPath(solutionName, "src", "Aurochses.Testing"));
+            Assert.Equal(Path.Combine(path, "src", "Aurochses.Xunit"), ProjectHelpers.GetFolderPath(solutionName, "src", "Aurochses.Xunit"));
         }
 
         [Fact]

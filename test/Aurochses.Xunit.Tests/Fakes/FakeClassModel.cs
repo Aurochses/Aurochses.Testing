@@ -1,4 +1,4 @@
-﻿namespace Aurochses.Testing.Tests.Fakes
+﻿namespace Aurochses.Xunit.Tests.Fakes
 {
     [FakeClass]
     public class FakeClassModel

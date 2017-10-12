@@ -1,11 +1,12 @@
-# Aurochses Testing
+# Aurochses Xunit
 
-Aurochses Testing is a library for creating xUnit tests.
+Aurochses Xunit is a library for creating xUnit tests.
 
 ## NuGet
 
-[![NuGet](https://img.shields.io/nuget/v/Aurochses.Testing.svg?style=flat-square)](https://www.nuget.org/packages/Aurochses.Testing)
-[![NuGet](https://img.shields.io/nuget/dt/Aurochses.Testing.svg?style=flat-square)](https://www.nuget.org/packages/Aurochses.Testing)
+[![NuGet](https://img.shields.io/nuget/v/Aurochses.Xunit.svg?style=flat-square)](https://www.nuget.org/packages/Aurochses.Xunit)
+[![NuGet](https://img.shields.io/nuget/dt/Aurochses.Xunit.svg?style=flat-square)](https://www.nuget.org/packages/Aurochses.Xunit)
+[![NuGet Status](http://nugetstatus.com/Aurochses.Xunit.png)](http://nugetstatus.com/packages/Aurochses.Xunit)
 
 ## Builds
 
