@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aurochses.Testing
+namespace Aurochses.Xunit
 {
     /// <summary>
     /// TypeHelpers.

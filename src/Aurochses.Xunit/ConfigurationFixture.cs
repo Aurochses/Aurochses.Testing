@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.PlatformAbstractions;
 
-namespace Aurochses.Testing
+namespace Aurochses.Xunit
 {
     /// <summary>
     /// Configuration Fixture

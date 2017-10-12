@@ -1,12 +1,12 @@
 ﻿using System;
 using Xunit;
 
-namespace Aurochses.Testing.Tests
+namespace Aurochses.Xunit.Tests
 {
     public class ConfigurationFixtureTests
     {
         [Fact]
-        public void Configuration_ItemIsValue_WhenTestingEnvironmentIsNotSet()
+        public void Configuration_ItemIsValue_WhenTestEnvironmentIsNotSet()
         {
             // Arrange & Act
             var fixture = new ConfigurationFixture();
@@ -16,7 +16,7 @@ namespace Aurochses.Testing.Tests
         }
 
         [Fact]
-        public void Configuration_ItemIsTestValue_WhenTestingEnvironmentIsTest()
+        public void Configuration_ItemIsTestValue_WhenTestEnvironmentIsDevelopment()
         {
             // Arrange
             var currentAspNetCoreEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");

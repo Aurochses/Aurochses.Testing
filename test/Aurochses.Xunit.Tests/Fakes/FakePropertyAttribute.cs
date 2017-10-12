@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aurochses.Testing.Tests.Fakes
+namespace Aurochses.Xunit.Tests.Fakes
 {
     public class FakePropertyAttribute : Attribute
     {

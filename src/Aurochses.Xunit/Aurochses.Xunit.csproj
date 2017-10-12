@@ -7,21 +7,21 @@
     <Company>Aurochses</Company>
     <Description>Library for creating xUnit tests.</Description>
     <Copyright>Aurochses 2017</Copyright>
-    <PackageLicenseUrl>https://github.com/Aurochses/Aurochses.Testing/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/Aurochses/Aurochses.Testing/wiki</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Aurochses/Aurochses.Xunit/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Aurochses/Aurochses.Xunit/wiki</PackageProjectUrl>
     <PackageIconUrl>https://www.gravatar.com/avatar/cb5925a77e502401f95bf2738b123994?s=64</PackageIconUrl>
-    <RepositoryUrl>https://github.com/Aurochses/Aurochses.Testing</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Aurochses/Aurochses.Xunit</RepositoryUrl>
     <PackageTags>Test Unit xunit</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\Aurochses.Testing.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.4\Aurochses.Xunit.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard1.4\Aurochses.Testing.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard1.4\Aurochses.Xunit.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
