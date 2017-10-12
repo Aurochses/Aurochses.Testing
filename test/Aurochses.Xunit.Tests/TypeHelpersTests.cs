@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Aurochses.Testing.Tests
+namespace Aurochses.Xunit.Tests
 {
     public class TypeHelpersTests
     {

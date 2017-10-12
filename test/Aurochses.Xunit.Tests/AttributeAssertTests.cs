@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using Aurochses.Testing.Tests.Fakes;
+using Aurochses.Xunit.Tests.Fakes;
 using Xunit;
 using Xunit.Sdk;
 
-namespace Aurochses.Testing.Tests
+namespace Aurochses.Xunit.Tests
 {
     public class AttributeAssertTests
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Extensions.PlatformAbstractions;
 
-namespace Aurochses.Testing
+namespace Aurochses.Xunit
 {
     /// <summary>
     /// ProjectHelpers.

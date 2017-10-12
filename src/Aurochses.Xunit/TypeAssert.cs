@@ -2,7 +2,7 @@
 using System.Reflection;
 using Xunit;
 
-namespace Aurochses.Testing
+namespace Aurochses.Xunit
 {
     /// <summary>
     /// TypeAssert.
