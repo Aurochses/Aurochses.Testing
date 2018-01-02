@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Microsoft.Extensions.PlatformAbstractions;
+using System.Reflection;
 
 namespace Aurochses.Xunit
 {
@@ -10,34 +10,41 @@ namespace Aurochses.Xunit
     public static class ProjectHelpers
     {
         /// <summary>
-        /// Gets the path of project's folder.
+        /// Gets the full path to the target project.
         /// </summary>
-        /// <param name="solutionName">Name of the solution.</param>
-        /// <param name="solutionRelativePath">The solution relative path.</param>
-        /// <param name="projectName">Name of the project.</param>
-        /// <returns>System.String.</returns>
-        /// <exception cref="System.Exception"></exception>
-        public static string GetFolderPath(string solutionName, string solutionRelativePath, string projectName)
+        /// <param name="projectRelativePath">
+        /// The parent directory of the target project.
+        /// e.g. src, samples, test, or test/Websites
+        /// </param>
+        /// <param name="startupAssembly">The target project's assembly.</param>
+        /// <returns>The full path to the target project.</returns>
+        public static string GetProjectPath(string projectRelativePath, Assembly startupAssembly)
         {
-            // Get currently executing test project path
-            var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+            // Get name of the target project which we want to test
+            var projectName = startupAssembly.GetName().Name;
 
-            // Find the folder which contains the solution file. We then use this information to find the target
-            // project which we want to test.
+            // Get currently executing test project path
+            var applicationBasePath = AppContext.BaseDirectory;
+
+            // Find the path to the target project
             var directoryInfo = new DirectoryInfo(applicationBasePath);
             do
             {
-                var solutionFileInfo = new FileInfo(Path.Combine(directoryInfo.FullName, $"{solutionName}.sln"));
-                if (solutionFileInfo.Exists)
-                {
-                    return Path.GetFullPath(Path.Combine(directoryInfo.FullName, solutionRelativePath, projectName));
-                }
-
                 directoryInfo = directoryInfo.Parent;
+
+                var projectDirectoryInfo = new DirectoryInfo(Path.Combine(directoryInfo.FullName, projectRelativePath));
+                if (projectDirectoryInfo.Exists)
+                {
+                    var projectFileInfo = new FileInfo(Path.Combine(projectDirectoryInfo.FullName, projectName, $"{projectName}.csproj"));
+                    if (projectFileInfo.Exists)
+                    {
+                        return Path.Combine(projectDirectoryInfo.FullName, projectName);
+                    }
+                }
             }
             while (directoryInfo.Parent != null);
 
-            throw new Exception($"Solution root could not be located using application root {applicationBasePath}.");
+            throw new Exception($"Project root could not be located using the application root {applicationBasePath}.");
         }
     }
 }
