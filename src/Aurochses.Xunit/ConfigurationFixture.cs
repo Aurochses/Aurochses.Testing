@@ -1,6 +1,6 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Aurochses.Xunit
 {
@@ -17,7 +17,7 @@ namespace Aurochses.Xunit
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             var builder = new ConfigurationBuilder()
-                .SetBasePath(PlatformServices.Default.Application.ApplicationBasePath)
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{environmentName}.json", true)
                 .AddEnvironmentVariables();
