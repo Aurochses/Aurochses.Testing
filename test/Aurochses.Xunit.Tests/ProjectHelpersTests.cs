@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
-using Microsoft.Extensions.PlatformAbstractions;
 using Xunit;
 
 namespace Aurochses.Xunit.Tests
@@ -12,11 +12,11 @@ namespace Aurochses.Xunit.Tests
 
         public ProjectHelpersTests()
         {
-            _applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+            _applicationBasePath = AppContext.BaseDirectory;
         }
 
         [Fact]
-        public void GetFolderPath_Success()
+        public void GetProjectPath_Success()
         {
             // Arrange
             const string solutionName = "Aurochses.Xunit";
@@ -29,15 +29,15 @@ namespace Aurochses.Xunit.Tests
             }
 
             // Act & Assert
-            Assert.Equal(Path.Combine(path, "src", "Aurochses.Xunit"), ProjectHelpers.GetFolderPath(solutionName, "src", "Aurochses.Xunit"));
+            Assert.Equal(Path.Combine(path, "src", "Aurochses.Xunit"), ProjectHelpers.GetProjectPath("src", typeof(ProjectHelpers).GetTypeInfo().Assembly));
         }
 
         [Fact]
-        public void GetFolderPath_ThrowException_WhenSolutionNotFound()
+        public void GetProjectPath_ThrowException_WhenSolutionNotFound()
         {
             // Arrange & Act & Assert
-            var exception = Assert.Throws<Exception>(() => ProjectHelpers.GetFolderPath("Test", "src", "Test"));
-            Assert.Equal($"Solution root could not be located using application root {_applicationBasePath}.", exception.Message);
+            var exception = Assert.Throws<Exception>(() => ProjectHelpers.GetProjectPath("incorrect", typeof(ProjectHelpers).GetTypeInfo().Assembly));
+            Assert.Equal($"Project root could not be located using the application root {_applicationBasePath}.", exception.Message);
         }
     }
 }
