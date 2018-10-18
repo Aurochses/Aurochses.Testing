@@ -16,12 +16,12 @@ namespace Aurochses.Xunit.Tests
         }
 
         [Fact]
-        public void Configuration_ItemIsTestValue_WhenTestEnvironmentIsDevelopment()
+        public void Configuration_ItemIsTestValue_WhenTestEnvironmentIsTest()
         {
             // Arrange
             var currentAspNetCoreEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
 
             // Act
             var fixture = new ConfigurationFixture();
