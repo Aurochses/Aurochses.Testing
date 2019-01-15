@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Aurochses.Xunit.Tests.Fakes;
+﻿using Aurochses.Xunit.Tests.Fakes;
 using Xunit;
 using Xunit.Sdk;
 

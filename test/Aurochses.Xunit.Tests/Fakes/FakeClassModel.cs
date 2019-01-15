@@ -1,5 +1,8 @@
-﻿namespace Aurochses.Xunit.Tests.Fakes
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Aurochses.Xunit.Tests.Fakes
 {
+    [ExcludeFromCodeCoverage]
     [FakeClass]
     public class FakeClassModel
     {
