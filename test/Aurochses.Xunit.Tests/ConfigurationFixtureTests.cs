@@ -9,7 +9,7 @@ namespace Aurochses.Xunit.Tests
         public void Configuration_ItemIsValue_WhenTestEnvironmentIsNotSet()
         {
             // Arrange & Act
-            var fixture = new ConfigurationFixture();
+            var fixture = new ConfigurationFixture("");
 
             // Assert
             Assert.Equal("Value", fixture.Configuration["Item"]);
