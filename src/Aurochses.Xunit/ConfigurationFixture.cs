@@ -12,9 +12,15 @@ namespace Aurochses.Xunit
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigurationFixture"/> class.
         /// </summary>
-        public ConfigurationFixture()
+        /// <param name="defaultEnvironmentName">Default ASPNETCORE_ENVIRONMENT value.</param>
+        public ConfigurationFixture(string defaultEnvironmentName = "Test")
         {
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            if (string.IsNullOrWhiteSpace(environmentName))
+            {
+                environmentName = defaultEnvironmentName;
+            }
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
