@@ -1,5 +1,5 @@
-﻿using Aurochses.Runtime;
-using Xunit;
+﻿using KellermanSoftware.CompareNetObjects;
+using Xunit.Sdk;
 
 namespace Aurochses.Xunit
 {
@@ -13,9 +13,14 @@ namespace Aurochses.Xunit
         /// </summary>
         /// <param name="expected">The expected object.</param>
         /// <param name="actual">The actual object.</param>
-        public static void ValueEquals(object expected, object actual)
+        public static void DeepEquals(object expected, object actual)
         {
-            Assert.True(expected.ValueEquals(actual));
+            var comparisonResult = new CompareLogic().Compare(expected, actual);
+
+            if (!comparisonResult.AreEqual)
+            {
+                throw new AssertActualExpectedException(expected, actual, comparisonResult.DifferencesString);
+            }
         }
     }
 }

@@ -7,53 +7,73 @@ namespace Aurochses.Xunit.Tests
 {
     public class ObjectAssertTests
     {
-        public static IEnumerable<object[]> ValueEqualsMemberData => new[]
+        public static IEnumerable<object[]> ValueEqualsSuccessMemberData => new[]
         {
             new object[]
             {
                 new ObjectAssertValueEqualsMemberDataModel {Value = null},
-                new ObjectAssertValueEqualsMemberDataModel {Value = null},
-                true
+                new ObjectAssertValueEqualsMemberDataModel {Value = null}
             },
             new object[]
             {
                 new ObjectAssertValueEqualsMemberDataModel {Value = "One"},
-                new ObjectAssertValueEqualsMemberDataModel {Value = "One"},
-                true
-            },
-            new object[]
-            {
-                new ObjectAssertValueEqualsMemberDataModel {Value = "One"},
-                new ObjectAssertValueEqualsMemberDataModel {Value = "Two"},
-                false
-            },
-            new object[]
-            {
-                new ObjectAssertValueEqualsMemberDataModel {Value = null},
-                new ObjectAssertValueEqualsMemberDataModel {Value = ""},
-                false
-            },
-            new object[]
-            {
-                new ObjectAssertValueEqualsMemberDataModel {Value = ""},
-                new ObjectAssertValueEqualsMemberDataModel {Value = null},
-                false
+                new ObjectAssertValueEqualsMemberDataModel {Value = "One"}
             }
         };
 
         [Theory]
-        [MemberData(nameof(ValueEqualsMemberData))]
-        public void ValueEquals_Success(object expected, object actual, bool isEqual)
+        [MemberData(nameof(ValueEqualsSuccessMemberData))]
+        public void ValueEquals_Success(object expected, object actual)
         {
             // Arrange & Act & Assert
-            if (isEqual)
+            ObjectAssert.DeepEquals(expected, actual);
+        }
+
+        public static IEnumerable<object[]> ValueEqualsThrowsAssertActualExpectedExceptionMemberData => new[]
+        {
+            new object[]
             {
-                ObjectAssert.ValueEquals(expected, actual);
-            }
-            else
+                new ObjectAssertValueEqualsMemberDataModel {Value = "One"},
+                new ObjectAssertValueEqualsMemberDataModel {Value = "Two"},
+                @"
+Begin Differences (1 differences):
+Types [String,String], Item Expected.Value != Actual.Value, Values (One,Two)
+End Differences (Maximum of 1 differences shown).
+Expected: ObjectAssertValueEqualsMemberDataModel { Value = ""One"" }
+Actual:   ObjectAssertValueEqualsMemberDataModel { Value = ""Two"" }"
+            },
+            new object[]
             {
-                Assert.Throws<TrueException>(() => ObjectAssert.ValueEquals(expected, actual));
+                new ObjectAssertValueEqualsMemberDataModel {Value = null},
+                new ObjectAssertValueEqualsMemberDataModel {Value = ""},
+                @"
+Begin Differences (1 differences):
+Types [null,String], Item Expected.Value != Actual.Value, Values ((null),)
+End Differences (Maximum of 1 differences shown).
+Expected: ObjectAssertValueEqualsMemberDataModel { Value = null }
+Actual:   ObjectAssertValueEqualsMemberDataModel { Value = """" }"
+            },
+            new object[]
+            {
+                new ObjectAssertValueEqualsMemberDataModel {Value = ""},
+                new ObjectAssertValueEqualsMemberDataModel {Value = null},
+                @"
+Begin Differences (1 differences):
+Types [String,null], Item Expected.Value != Actual.Value, Values (,(null))
+End Differences (Maximum of 1 differences shown).
+Expected: ObjectAssertValueEqualsMemberDataModel { Value = """" }
+Actual:   ObjectAssertValueEqualsMemberDataModel { Value = null }"
             }
+        };
+
+        [Theory]
+        [MemberData(nameof(ValueEqualsThrowsAssertActualExpectedExceptionMemberData))]
+        public void ValueEquals_ThrowsAssertActualExpectedException(object expected, object actual, string exceptionMessage)
+        {
+            // Arrange & Act & Assert
+            var exception = Assert.Throws<AssertActualExpectedException>(() => ObjectAssert.DeepEquals(expected, actual));
+
+            Assert.Equal(exceptionMessage, exception.Message);
         }
     }
 }
